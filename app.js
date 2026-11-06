@@ -154,7 +154,7 @@
       <p class="m0">${esc(r.kurz)}</p>
       <div class="card"><div class="label">Zutaten</div><ul class="z" style="margin-top:6px">${r.zutaten.map(z => `<li>${esc(z)}</li>`).join("")}</ul></div>
       <div class="card"><div class="label" style="margin-bottom:8px">Zubereitung</div><ol class="steps">${r.schritte.map(s => `<li><span><b>${esc(s.t)} <span class="muted small">· ${s.min} Min.</span></b>${esc(s.d)}</span></li>`).join("")}</ol></div>
-      ${r.samu ? `<div class="note"><b>Für Samu:</b> ${esc(r.samu)}</div>` : ""}
+      ${r.samu ? `<div class="note"><b>Für den Kleinen:</b> ${esc(r.samu)}</div>` : ""}
       ${r.reste ? `<div class="note"><b>Reste:</b> ${esc(r.reste)}</div>` : ""}`);
     $("#fotoIn").onchange = async ev => {
       const file = ev.target.files[0]; if (!file) return;

@@ -10,7 +10,7 @@ window.COACH = {
       { tag: "Mo", datum: "9.11.",  iso: "2026-11-09", items: [{ typ: "kochen", text: "Hähnchen-Gemüse-Pfanne (Reis doppelt kochen)" }] },
       { tag: "Di", datum: "10.11.", iso: "2026-11-10", items: [{ typ: "sport", text: "Gym: Einheit A, ca. 60 Min." }] },
       { tag: "Mi", datum: "11.11.", iso: "2026-11-11", items: [{ typ: "kochen", text: "Linsen-Bolognese" }] },
-      { tag: "Do", datum: "12.11.", iso: "2026-11-12", items: [{ typ: "treffen", text: "Abend frei für Jens, Tolle oder Phil" }] },
+      { tag: "Do", datum: "12.11.", iso: "2026-11-12", items: [{ typ: "treffen", text: "Abend frei für ein Treffen mit den Jungs" }] },
       { tag: "Fr", datum: "13.11.", iso: "2026-11-13", items: [{ typ: "sport", text: "Gym: Einheit B, ca. 60 Min." }] },
       { tag: "Sa", datum: "14.11.", iso: "2026-11-14", items: [{ typ: "kochen", text: "Ofenlachs mit Kartoffeln" }] },
       { tag: "So", datum: "15.11.", iso: "2026-11-15", items: [{ typ: "kochen", text: "Meal Prep: Chili für Mo + Di" }] }
@@ -65,7 +65,7 @@ window.COACH = {
   },
 
   rezepte: [
-    { id: "haehnchen-pfanne", art: "zuhause", name: "Hähnchen-Gemüse-Pfanne mit Reis", zeit: "25 Min.", portionen: "2 Erw. + Samu",
+    { id: "haehnchen-pfanne", art: "zuhause", name: "Hähnchen-Gemüse-Pfanne mit Reis", zeit: "25 Min.", portionen: "2 Erw. + Kind",
       naehr: "ca. 550 kcal · 45 g Eiweiß pro Erwachsenen-Portion", farbe: "#D9481F",
       kurz: "Viel Eiweiß, bunt, schnell. Reis doppelt kochen, die Hälfte ist fürs Meal Prep.",
       zutaten: ["600 g Hähnchenbrust", "2 Paprika", "1 Zucchini", "2 Möhren", "1 Zwiebel", "2 Knoblauchzehen", "500 g Basmati-Reis (Hälfte für Meal Prep)", "150 g Naturjoghurt", "1 TL Paprikapulver, 1 EL Olivenöl"],
@@ -78,7 +78,7 @@ window.COACH = {
       ],
       samu: "Seine Portion vor dem Salzen abnehmen, Gemüse klein schneiden.",
       reste: "Rest kalt mit Reis in eine Dose: Mittagessen für den nächsten Tag." },
-    { id: "linsen-bolognese", art: "zuhause", name: "Linsen-Bolognese mit Vollkornnudeln", zeit: "30 Min.", portionen: "2 Erw. + Samu",
+    { id: "linsen-bolognese", art: "zuhause", name: "Linsen-Bolognese mit Vollkornnudeln", zeit: "30 Min.", portionen: "2 Erw. + Kind",
       naehr: "ca. 600 kcal · 30 g Eiweiß pro Erwachsenen-Portion", farbe: "#B5432E",
       kurz: "Macht lange satt, günstig, kinderleicht.",
       zutaten: ["250 g rote Linsen", "2 × 500 g passierte Tomaten", "1 Möhre", "1 Zwiebel", "1 Knoblauchzehe", "500 g Vollkornnudeln", "30 g Parmesan", "1 TL Oregano, 1 EL Olivenöl"],
@@ -90,7 +90,7 @@ window.COACH = {
       ],
       samu: "Passt perfekt, Linsen zerfallen weich. Wenig salzen.",
       reste: "Soße hält 3 Tage im Kühlschrank oder lässt sich einfrieren." },
-    { id: "ofenlachs", art: "zuhause", name: "Ofenlachs mit Kartoffeln und Brokkoli", zeit: "35 Min.", portionen: "2 Erw. + Samu",
+    { id: "ofenlachs", art: "zuhause", name: "Ofenlachs mit Kartoffeln und Brokkoli", zeit: "35 Min.", portionen: "2 Erw. + Kind",
       naehr: "ca. 580 kcal · 38 g Eiweiß pro Erwachsenen-Portion", farbe: "#E07A3F",
       kurz: "Ein Blech, kaum Abwasch, gute Fette.",
       zutaten: ["4 Lachsfilets (ca. 500 g)", "1 kg festkochende Kartoffeln", "1 Brokkoli", "1 Zitrone", "2 EL Olivenöl, Pfeffer"],
