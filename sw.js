@@ -1,5 +1,5 @@
 // Offline-Speicher: App-Dateien werden gecacht, Inhalte (data.js) immer zuerst frisch geladen.
-const CACHE = "mario-coach-v1";
+const CACHE = "mario-coach-v2";
 const FILES = ["./", "index.html", "styles.css", "app.js", "figures.js", "data.js", "manifest.webmanifest", "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png"];
 
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES))); self.skipWaiting(); });

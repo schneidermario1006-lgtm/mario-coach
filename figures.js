@@ -44,8 +44,12 @@
   }
 
   function body(q) {
-    const L = (a, b) => `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>`;
-    return `<g class="b">${L(q.n, q.p)}${L(q.p, q.k)}${L(q.k, q.f)}${L(q.n, q.e)}${L(q.e, q.w)}</g><circle cx="${q.h[0]}" cy="${q.h[1]}" r="7" class="hd"/>`;
+    const L = (a, b, c) => `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"${c ? ` class="${c}"` : ""}/>`;
+    const sh = (pt) => [pt[0] - 3, pt[1] - 1];
+    // hinteres Bein und hinterer Arm, etwas versetzt und heller
+    const back = `<g class="bk">${L(q.p, sh(q.k))}${L(sh(q.k), sh(q.f))}${L(q.n, sh(q.e))}${L(sh(q.e), sh(q.w))}</g>`;
+    const front = `<g class="b">${L(q.n, q.p, "torso")}${L(q.p, q.k)}${L(q.k, q.f)}${L(q.n, q.e)}${L(q.e, q.w)}</g>`;
+    return `${back}${front}<circle cx="${q.h[0]}" cy="${q.h[1]}" r="7.5" class="hd"/>`;
   }
 
   function panel(def, q, label) {
@@ -53,6 +57,15 @@
       <line x1="0" y1="95.5" x2="120" y2="95.5" class="fl"/>
       ${def.gear.map(g => gear(g, q)).join("")}${body(q)}</svg><figcaption>${label}</figcaption></figure>`;
   }
+
+  // Kleines Vorschaubild, das zwischen Start und Ende wechselt
+  window.figureAnim = function (id) {
+    const def = POSES[id];
+    if (!def) return "";
+    const g = q => `${def.gear.map(x => gear(x, q)).join("")}${body(q)}`;
+    return `<svg viewBox="0 0 120 100" class="anim" aria-hidden="true"><line x1="0" y1="95.5" x2="120" y2="95.5" class="fl"/>
+      <g class="fa">${g(def.a)}</g><g class="fb">${g(def.b)}</g></svg>`;
+  };
 
   window.figureFor = function (id) {
     const def = POSES[id];
