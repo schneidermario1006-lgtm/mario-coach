@@ -193,3 +193,6 @@ nav .in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(
 .hItem.lightItem{background:var(--bg);color:var(--fg)}
 .hItem.lightItem .go{color:var(--muted)}
 body.timerOn .wrap{padding-bottom:calc(180px + env(safe-area-inset-bottom,0px))}
+
+.credit{font-size:11px;color:var(--muted);margin-top:-4px}
+.credit a{color:inherit}

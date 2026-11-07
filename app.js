@@ -223,6 +223,7 @@
     const hist = S.logs.filter(l => l.werte && l.werte[id] != null).slice(0, 6);
     openSheet(`<h2>${esc(u.name)}</h2>
       <div class="bigFig">${window.figureFor(id)}</div>
+      ${u.bild ? `<img class="heroImg" src="${esc(u.bild.src)}" alt="Foto: ${esc(u.name)}" loading="lazy">${bildCredit(u.bild)}` : ""}
       <div class="facts"><span class="fact">${u.saetze} × ${esc(u.wdh)}</span><span class="fact">Pause ${mmss(u.pauseSek)}</span><span class="fact">${esc(u.muskeln)}</span></div>
       <div class="card section"><div class="label">Ausgangsposition</div><p class="m0">${esc(u.start)}</p></div>
       <div class="card section"><div class="label">Ausführung</div><ol class="steps" style="margin-top:6px">${u.ablauf.map(t => `<li><span>${esc(t)}</span></li>`).join("")}</ol></div>
@@ -236,10 +237,11 @@
       <a class="btn ghost" href="https://www.youtube.com/results?search_query=${encodeURIComponent(u.name + " richtige Ausführung")}" target="_blank" rel="noopener">Video auf YouTube ansehen</a>`);
   }
 
+  const bildCredit = b => b && b.by ? `<div class="credit">Foto: <a href="${esc(b.link)}" target="_blank" rel="noopener">${esc(b.by)}</a>${b.lic ? " · " + esc(b.lic) : ""}</div>` : "";
   /* ---------- Essen ---------- */
   async function renderEssen() {
     const fotos = await fotoAll();
-    const cover = r => fotos[r.id] ? `<img class="rimg" src="${fotos[r.id]}" alt="">` : `<div class="rph" style="background-color:${r.farbe}">${esc(r.tag || r.zeit)}</div>`;
+    const cover = r => (fotos[r.id] || (r.bild && r.bild.src)) ? `<img class="rimg" src="${esc(fotos[r.id] || r.bild.src)}" alt="" loading="lazy">` : `<div class="rph" style="background-color:${r.farbe}">${esc(r.tag || r.zeit)}</div>`;
     $("#rZuhause").innerHTML = C.rezepte.filter(r => r.art === "zuhause").map(r => `<button class="rwide" type="button" data-r="${r.id}">${cover(r)}
       <div class="rtxt"><h3>${esc(r.name)}</h3><span class="small muted">${esc(r.zeit)} · ${esc(r.naehr || "")}</span><span class="small">${esc(r.kurz)}</span></div></button>`).join("");
     $("#rMit").innerHTML = C.rezepte.filter(r => r.art === "mitnehmen").map(r => `<button class="rcard" type="button" data-r="${r.id}">${cover(r)}
@@ -250,10 +252,10 @@
   }
   async function openRezept(id) {
     const r = C.rezepte.find(x => x.id === id); if (!r) return;
-    const foto = await fotoGet(id);
+    const eigen = await fotoGet(id), foto = eigen || (r.bild && r.bild.src);
     openSheet(`<h2>${esc(r.name)}</h2>
-      ${foto ? `<img class="heroImg" src="${foto}" alt="Foto: ${esc(r.name)}">` : `<div class="rph" style="background-color:${r.farbe};border-radius:12px;font-size:22px;aspect-ratio:16/9">${esc(r.name)}</div>`}
-      <label class="btn ghost" for="fotoIn">${foto ? "Foto ersetzen" : "Foto vom Gericht machen"}</label>
+      ${foto ? `<img class="heroImg" src="${esc(foto)}" alt="Foto: ${esc(r.name)}">${!eigen ? bildCredit(r.bild) : ""}` : `<div class="rph" style="background-color:${r.farbe};border-radius:12px;font-size:22px;aspect-ratio:16/9">${esc(r.name)}</div>`}
+      <label class="btn ghost" for="fotoIn">${eigen ? "Foto ersetzen" : "Eigenes Foto machen"}</label>
       <input type="file" id="fotoIn" accept="image/*" hidden>
       <div class="facts"><span class="fact">${esc(r.zeit)}</span><span class="fact">${esc(r.portionen)}</span>${r.naehr ? `<span class="fact">${esc(r.naehr)}</span>` : ""}</div>
       <p class="m0">${esc(r.kurz)}</p>
